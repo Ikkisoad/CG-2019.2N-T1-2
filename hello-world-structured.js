@@ -44,26 +44,46 @@ scene.add( ambientLight );
 // create a texture loader.
 const textureLoader = new THREE.TextureLoader();
 
-  // Load a texture. See the note in chapter 4 on working locally, or the page
-  // https://threejs.org/docs/#manual/introduction/How-to-run-things-locally
-  // if you run into problems here
-  const texture = textureLoader.load( 'img/uv.png' );
-  // set the "color space" of the texture
-  texture.encoding = THREE.sRGBEncoding;
-  // reduce blurring at glancing angles
-  texture.anisotropy = 16;
+// Load a texture. See the note in chapter 4 on working locally, or the page
+// https://threejs.org/docs/#manual/introduction/How-to-run-things-locally
+// if you run into problems here
+const texture = textureLoader.load( 'img/uv.png' );
+// set the "color space" of the texture
+texture.encoding = THREE.sRGBEncoding;
+// reduce blurring at glancing angles
+texture.anisotropy = 16;
 
-  // create a Standard material using the texture we just loaded as a color map
-  const material = new THREE.MeshStandardMaterial( {
+// create a Standard material using the texture we just loaded as a color map
+const material = new THREE.MeshStandardMaterial( {
     map: texture,
-  } );
+} );
+// TRAIN STUFF
+/*const body = new THREE.MeshStandardMaterial( {
+    color: 0xff3333, // red
+    flatShading: true,
+} );*/
+
+// just as with textures, we need to put colors into linear color space
+//body.color.convertSRGBToLinear();
+
+const detail = new THREE.MeshStandardMaterial( {
+    color: 0x333333, // darkgrey
+    flatShading: true,
+} );
+
+detail.color.convertSRGBToLinear();
+
+const train = new THREE.Group();
+//train.add(body);
+train.add(detail);
+scene.add( train );
 
   //CUBE
     var geometry = new THREE.BoxBufferGeometry(1, 1, 1);
     //var material = new THREE.MeshBasicMaterial({color: 0xff0000});
     //var material = new THREE.MeshStandardMaterial({color: 0xff0000});
     var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    //scene.add(cube);
 
 /*var animate = function() {
     requestAnimationFrame(animate);
