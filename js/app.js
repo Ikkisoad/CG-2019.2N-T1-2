@@ -70,8 +70,8 @@ function loadModels() {
     const mixer = new THREE.AnimationMixer( model );
     mixers.push( mixer );
 
-    /*const action = mixer.clipAction( animation );
-    action.play();*/
+   const action = mixer.clipAction( animation );
+   action.play();
 
     scene.add( model );
 
