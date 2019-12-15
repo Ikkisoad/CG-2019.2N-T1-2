@@ -95,7 +95,7 @@ function loadModels() {
   loader.load( 'models/Glaceon4th.glb', gltf => onLoad( gltf, glaceonPosition ), onProgress, onError );*/
 
   const G5thPosition = new THREE.Vector3( 0, 0, 0 );
-  loader.load( 'models/GlaceonTest.glb', gltf => onLoad( gltf, G5thPosition ), onProgress, onError );
+  loader.load( 'models/Glaceon.glb', gltf => onLoad( gltf, G5thPosition ), onProgress, onError );
 
 }
 
